@@ -46,5 +46,8 @@ namespace FluentMigrator.DotNet.Cli.Commands
 
         [Option("-b|--allow-breaking-changes", Description = "Allows execution of migrations marked as breaking changes.")]
         public bool AllowBreakingChanges { get; }
+
+        [Option("--strip", Description = "Strip comments from the SQL scripts. Default is true.")]
+        public bool StripComments { get; set; } = true;
     }
 }

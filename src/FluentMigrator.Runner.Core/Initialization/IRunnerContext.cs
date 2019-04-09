@@ -167,6 +167,11 @@ namespace FluentMigrator.Runner.Initialization
         string ProviderSwitches { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the comments should be stripped
+        /// </summary>
+        bool StripComments { get; set; }
+
+        /// <summary>
         /// Use one transaction for the whole session
         /// </summary>
         /// <remarks>

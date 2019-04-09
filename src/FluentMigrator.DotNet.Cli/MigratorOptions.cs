@@ -56,6 +56,7 @@ namespace FluentMigrator.DotNet.Cli
         public bool Output { get; private set; }
         public string OutputFileName { get; private set; }
         public bool AllowBreakingChanges { get; private set; }
+        public bool StripComments { get; private set; }
 
         public static MigratorOptions CreateListMigrations(ListMigrations cmd)
         {
@@ -125,6 +126,7 @@ namespace FluentMigrator.DotNet.Cli
             Profile = cmd.Profile;
             Context = cmd.Context;
             Timeout = cmd.Timeout;
+            StripComments = cmd.StripComments;
             (Output, OutputFileName) = cmd.Output;
             return Init((MigrationCommand)cmd);
         }
