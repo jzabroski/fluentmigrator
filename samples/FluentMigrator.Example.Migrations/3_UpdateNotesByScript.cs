@@ -32,7 +32,7 @@ namespace FluentMigrator.Example.Migrations
         public override void Up()
         {
             Execute.Sql(@"/* this is a test script */
-update Notes set body=body || ' (modified)';
+update Notes set body=body + ' (modified)';
 ");
         }
 

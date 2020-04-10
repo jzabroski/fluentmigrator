@@ -27,6 +27,7 @@ namespace FluentMigrator.Example.Migrator
     public static class DefaultDatabaseConfigurations
     {
         public static readonly DatabaseConfiguration Sqlite = CreateSqliteConfiguration();
+        public static readonly DatabaseConfiguration SqlServer2016 = CreateSqlServer2016Configuration();
 
 #if NETFRAMEWORK
         public static readonly DatabaseConfiguration Jet = CreateJetConfiguration();
@@ -47,6 +48,15 @@ namespace FluentMigrator.Example.Migrator
             {
                 ProcessorId = "sqlite",
                 ConnectionString = csb.ConnectionString,
+            };
+        }
+
+        public static DatabaseConfiguration CreateSqlServer2016Configuration()
+        {
+            return new DatabaseConfiguration()
+            {
+                ProcessorId = "sqlserver2016",
+                ConnectionString = "Data Source=.;Initial Catalog=DATABASE_NAME;Integrated Security=True;"
             };
         }
 

@@ -33,14 +33,17 @@ namespace FluentMigrator.Example.Migrator
                 .AddFluentMigratorCore()
                 .ConfigureRunner(
                     builder => builder
-#if NETFRAMEWORK
-                        .AddJet()
-#endif
-                        .AddSQLite()
+                        .AddSqlServer2016()
                         .WithGlobalConnectionString(dbConfig.ConnectionString)
                         .ScanIn(typeof(AddGTDTables).Assembly).For.Migrations())
+                        
                 .Configure<SelectingProcessorAccessorOptions>(
                     opt => opt.ProcessorId = dbConfig.ProcessorId)
+                .Configure<FluentMigrator.Runner.Initialization.RunnerOptions>(opt =>
+                    {
+                        opt.IncludeUntaggedMigrations = true;
+                        opt.Tags = new string[] { TagNames.TagNotMentionedInAnyMigration };
+                    })
                 .BuildServiceProvider();
 
             // Instantiate the runner

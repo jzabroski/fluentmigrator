@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FluentMigrator.Example.Migrator": {
+      "commandName": "Project",
+      "commandLineArgs": "--mode di --dialect sqlserver2016"
+    }
+  }
+}

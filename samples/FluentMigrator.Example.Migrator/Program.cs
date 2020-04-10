@@ -102,7 +102,7 @@ namespace FluentMigrator.Example.Migrator
             {
                 return new DatabaseConfiguration()
                 {
-                    ProcessorId = "sqlite",
+                    ProcessorId = "sqlserver2016",
                     ConnectionString = connectionString.Value(),
                 };
             }
