@@ -16,6 +16,7 @@
 
 #endregion
 
+#if NET461
 using System;
 using System.IO;
 using System.Text;
@@ -283,3 +284,4 @@ namespace FluentMigrator.Tests.Unit.Runners
         }
     }
 }
+#endif

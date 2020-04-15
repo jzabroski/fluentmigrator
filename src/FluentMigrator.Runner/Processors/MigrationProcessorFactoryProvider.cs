@@ -30,7 +30,9 @@ using FluentMigrator.Runner.Processors.MySql;
 using FluentMigrator.Runner.Processors.Oracle;
 using FluentMigrator.Runner.Processors.Postgres;
 using FluentMigrator.Runner.Processors.Redshift;
+#if NET461
 using FluentMigrator.Runner.Processors.SqlAnywhere;
+#endif
 using FluentMigrator.Runner.Processors.SqlServer;
 using FluentMigrator.Runner.Processors.SQLite;
 
@@ -68,7 +70,9 @@ namespace FluentMigrator.Runner.Processors
             Register(new SqlServer2016ProcessorFactory());
             Register(new SqlServerProcessorFactory());
             Register(new SqlServerCeProcessorFactory());
+#if NET461
             Register(new SqlAnywhere16ProcessorFactory());
+#endif
             Register(new HanaProcessorFactory());
             Register(new RedshiftProcessorFactory());
 

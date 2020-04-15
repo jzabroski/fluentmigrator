@@ -16,6 +16,7 @@
 //
 #endregion
 
+#if NET461
 using FluentMigrator.Builders.Create.Index;
 using FluentMigrator.Expressions;
 using FluentMigrator.Runner.Generators.SqlAnywhere;
@@ -180,3 +181,4 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlAnywhere
         }
     }
 }
+#endif

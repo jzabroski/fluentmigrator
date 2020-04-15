@@ -14,6 +14,7 @@
 // limitations under the License.
 #endregion
 
+#if NET461
 using System;
 
 using FluentMigrator.Builders.Create.Constraint;
@@ -70,3 +71,4 @@ namespace FluentMigrator.SqlAnywhere
         }
     }
 }
+#endif

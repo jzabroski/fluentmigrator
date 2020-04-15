@@ -16,6 +16,7 @@
 //
 #endregion
 
+#if NET461
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -176,3 +177,4 @@ namespace FluentMigrator.Tests.Unit.Initialization
         }
     }
 }
+#endif

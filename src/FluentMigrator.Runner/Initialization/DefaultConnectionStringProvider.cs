@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+
 using System.Linq;
 
 using JetBrains.Annotations;
@@ -26,6 +27,9 @@ using JetBrains.Annotations;
 #if NETFRAMEWORK
 using FluentMigrator.Runner.Initialization.NetFramework;
 using Microsoft.Extensions.Options;
+#endif
+#if NETSTANDARD2_1
+using NotNullAttribute = System.Diagnostics.CodeAnalysis.NotNullAttribute;
 #endif
 
 namespace FluentMigrator.Runner.Initialization

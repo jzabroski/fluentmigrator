@@ -59,7 +59,7 @@ namespace FluentMigrator.Runner.Processors.Jet
             [NotNull] IConnectionStringAccessor connectionStringAccessor)
             : base(generator, logger, options.Value)
         {
-            var factory = OleDbFactory.Instance;
+            var factory = System.Data.OleDb.OleDbFactory.Instance;
             var connectionString = connectionStringAccessor.ConnectionString ?? options.Value.ConnectionString;
             if (factory != null)
             {

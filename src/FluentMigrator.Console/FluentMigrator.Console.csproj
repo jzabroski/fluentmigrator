@@ -1,27 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="$(MSBuildThisFileDirectory)../../PackageTool.props" />
+  <Import Project="$(MSBuildThisFileDirectory)../../Package.AssemblySigning.props" />
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>net461</TargetFrameworks>
     <AssemblyName>Migrate</AssemblyName>
     <PackageId>FluentMigrator.Console</PackageId>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\FluentMigrator.snk</AssemblyOriginatorKeyFile>
     <Description>Console runner for FluentMigrator</Description>
     <IsPackable>false</IsPackable>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <RuntimeIdentifiers>win7-x86;win7-x64;any</RuntimeIdentifiers>
   </PropertyGroup>
-  <Import Project="$(MSBuildThisFileDirectory)../../PackageTool.props" />
-  <ItemGroup>
-    <None Include="..\..\FluentMigrator.snk" Link="FluentMigrator.snk" />
-  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\FluentMigrator.Runner\FluentMigrator.Runner.csproj" />
   </ItemGroup>
+  <!-- Because this tool uses TargetFramework net461, and because most of the below
+       PackageReference items reference netstandard2.0, and support .NET Framework 4.6.1
+       has spotty support for netstandard2.0, we generate a lock file to tell static
+       analysis tools (like the GitHub Action dependabot) we really want to stick with
+       these old package versions. -->
+  <PropertyGroup>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="3.2.7" />
     <PackageReference Include="FirebirdSql.Data.FirebirdClient" Version="5.12.1" />
-    <PackageReference Include="FSharp.Core" Version="4.6.2" />
+    <PackageReference Include="FSharp.Core" Version="4.7.1" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="2.0.1" />
     <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
     <PackageReference Include="MySql.Data" Version="8.0.11" />

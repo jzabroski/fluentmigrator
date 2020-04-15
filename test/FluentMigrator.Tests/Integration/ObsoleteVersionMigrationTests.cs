@@ -24,7 +24,9 @@ using FluentMigrator.Runner.Announcers;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors.Firebird;
 using FluentMigrator.Runner.Processors.MySql;
+#if NET461
 using FluentMigrator.Runner.Processors.SqlAnywhere;
+#endif
 using FluentMigrator.Runner.Processors.SQLite;
 using FluentMigrator.Runner.Versioning;
 using FluentMigrator.Runner.VersionTableInfo;
@@ -99,7 +101,12 @@ namespace FluentMigrator.Tests.Integration
 
                 runner.Down(new VersionSchemaMigration(tableMetaData));
                 processor.SchemaExists(tableMetaData.SchemaName).ShouldBeFalse();
-            }, true, typeof(SQLiteProcessor), typeof(MySqlProcessor), typeof(FirebirdProcessor), typeof(SqlAnywhereProcessor));
+            },
+            true,
+#if NET461
+            typeof(SqlAnywhereProcessor),
+#endif
+            typeof(SQLiteProcessor), typeof(MySqlProcessor), typeof(FirebirdProcessor));
         }
 
         [Test]

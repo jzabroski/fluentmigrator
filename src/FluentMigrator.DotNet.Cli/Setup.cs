@@ -87,7 +87,9 @@ namespace FluentMigrator.DotNet.Cli
                         .AddPostgres()
                         .AddPostgres92()
                         .AddRedshift()
+#if NET461
                         .AddSqlAnywhere()
+#endif
                         .AddSQLite()
                         .AddSqlServer()
                         .AddSqlServer2000()
@@ -155,8 +157,13 @@ namespace FluentMigrator.DotNet.Cli
 
         private static void Configure(ILoggerFactory loggerFactory)
         {
+#if NETSTANDARD2_0
             loggerFactory
                 .AddDebug(LogLevel.Trace);
+#endif
+#if NETSTANDARD2_1
+            LoggerFactory.Create(builder => builder.AddDebug(LogLevel.Trace));
+#endif
         }
 
         private static IMapper ConfigureMapper()

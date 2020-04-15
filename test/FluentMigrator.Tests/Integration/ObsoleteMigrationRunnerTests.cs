@@ -37,7 +37,9 @@ using FluentMigrator.Runner.Processors;
 using FluentMigrator.Runner.Processors.Firebird;
 using FluentMigrator.Runner.Processors.MySql;
 using FluentMigrator.Runner.Processors.Postgres;
+#if NET461
 using FluentMigrator.Runner.Processors.SqlAnywhere;
+#endif
 using FluentMigrator.Runner.Processors.SQLite;
 using FluentMigrator.Runner.Processors.SqlServer;
 using FluentMigrator.Tests.Integration.Migrations;
@@ -1189,7 +1191,15 @@ namespace FluentMigrator.Tests.Integration
                     runner.Down(new TestCreateAndDropTableMigrationWithSchema());
 
                     runner.Down(new TestCreateSchema());
-                }, true, new[] { typeof(SQLiteProcessor), typeof(FirebirdProcessor), typeof(SqlAnywhereProcessor) });
+                },
+                true,
+                new[] {
+#if NET461
+                    typeof(SqlAnywhereProcessor),
+#endif
+                    typeof(SQLiteProcessor),
+                    typeof(FirebirdProcessor)
+                });
         }
 
         [Test]
@@ -1254,7 +1264,15 @@ namespace FluentMigrator.Tests.Integration
                     runner.Down(new TestCreateAndDropTableMigrationWithSchema());
 
                     runner.Down(new TestCreateSchema());
-                }, true, new[] { typeof(SQLiteProcessor), typeof(FirebirdProcessor), typeof(SqlAnywhereProcessor) });
+                },
+                true,
+                new[] {
+#if NET461
+                    typeof(SqlAnywhereProcessor),
+#endif
+                    typeof(SQLiteProcessor),
+                    typeof(FirebirdProcessor)
+                });
         }
 
         [Test]
@@ -1284,7 +1302,12 @@ namespace FluentMigrator.Tests.Integration
 
                     runner.Down(new TestCreateAndDropTableMigration());
 
-                }, true, typeof(SQLiteProcessor), typeof(SqlAnywhereProcessor));
+                },
+                true,
+#if NET461
+            typeof(SqlAnywhereProcessor),
+#endif
+                typeof(SQLiteProcessor));
         }
 
         [Test]
@@ -1316,7 +1339,15 @@ namespace FluentMigrator.Tests.Integration
                     runner.Down(new TestCreateAndDropTableMigrationWithSchema());
 
                     runner.Down(new TestCreateSchema());
-                }, true, new[] { typeof(SQLiteProcessor), typeof(FirebirdProcessor), typeof(SqlAnywhereProcessor) });
+                },
+                true,
+                new[] {
+#if NET461
+                    typeof(SqlAnywhereProcessor),
+#endif
+                    typeof(SQLiteProcessor),
+                    typeof(FirebirdProcessor)
+                });
         }
 
         [Test]
@@ -1538,7 +1569,14 @@ namespace FluentMigrator.Tests.Integration
 
                     runner.Down(new TestCreateAndDropTableMigration());
 
-                }, true, new[] { typeof(SQLiteProcessor), typeof(SqlAnywhereProcessor) });
+                },
+                true,
+                new[] {
+#if NET461
+                    typeof(SqlAnywhereProcessor),
+#endif
+                    typeof(SQLiteProcessor)
+                });
         }
 
         [Test]
@@ -1571,7 +1609,14 @@ namespace FluentMigrator.Tests.Integration
 
                     runner.Down(new TestCreateSchema());
 
-                }, true, new[] { typeof(SQLiteProcessor), typeof(SqlAnywhereProcessor) });
+                },
+                true,
+                new[] {
+#if NET461
+                    typeof(SqlAnywhereProcessor),
+#endif
+                    typeof(SQLiteProcessor)
+                });
         }
 
         [Test]

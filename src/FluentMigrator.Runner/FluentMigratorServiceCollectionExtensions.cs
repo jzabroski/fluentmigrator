@@ -277,7 +277,9 @@ namespace Microsoft.Extensions.DependencyInjection
                         .AddPostgres()
                         .AddPostgres92()
                         .AddRedshift()
+#if NET461
                         .AddSqlAnywhere()
+#endif
                         .AddSQLite()
                         .AddSqlServer()
                         .AddSqlServer2000()

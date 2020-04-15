@@ -14,6 +14,7 @@
 // limitations under the License.
 #endregion
 
+#if NET461
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,3 +48,4 @@ namespace FluentMigrator.Tests.Unit.BatchParser
         }
     }
 }
+#endif

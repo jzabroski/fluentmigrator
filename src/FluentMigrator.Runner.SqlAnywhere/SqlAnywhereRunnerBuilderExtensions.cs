@@ -14,6 +14,7 @@
 // limitations under the License.
 #endregion
 
+#if NET461
 using FluentMigrator.Runner.BatchParser;
 using FluentMigrator.Runner.Generators.SqlAnywhere;
 using FluentMigrator.Runner.Processors.SqlAnywhere;
@@ -56,3 +57,4 @@ namespace FluentMigrator.Runner
         }
     }
 }
+#endif

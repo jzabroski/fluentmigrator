@@ -16,6 +16,7 @@
 //
 #endregion
 
+#if NET461
 using System;
 using System.Data;
 
@@ -369,3 +370,4 @@ namespace FluentMigrator.Tests.Unit.Generators.SqlAnywhere
         }
     }
 }
+#endif
